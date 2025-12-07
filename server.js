@@ -3,24 +3,18 @@ require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
-// require('dotenv').config();
 
 const authRoutes = require('./routes/authRoutes');
 const protectedRoutes = require('./routes/protectedRoutes');
 
 const app = express();
 
-// Middleware to parse JSON
 app.use(express.json());
-// Enable CORS for development (adjust origin in production)
 app.use(cors());
 
-// Connect to MongoDB
+//MongoDB
 mongoose
     .connect(process.env.DB_URI, {
-
-        // useNewUrlParser: true,
-        // useUnifiedTopology: true,
     })
     .then(() => console.log('MongoDB connected'))
     .catch((err) => console.error('MongoDB connection failed:', err));

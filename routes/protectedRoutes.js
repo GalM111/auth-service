@@ -15,18 +15,4 @@ router.get('/user', authMiddleware, (req, res) => {
         });
 });
 
-// GET /api/admin (only admin role)
-router.get(
-    '/admin',
-    [authMiddleware, roleMiddleware('admin')],
-    (req, res) => {
-        res
-            .status(200)
-            .json({
-                message: 'Welcome to the admin dashboard',
-                user: req.user,
-            });
-    }
-);
-
 module.exports = router;
